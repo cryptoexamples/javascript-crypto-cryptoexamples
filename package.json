@@ -1,0 +1,36 @@
+{
+  "name": "cryptoexamples-in-javascript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha ./build/trans/**/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gilbert.informatik.uni-stuttgart.de/minderki/CryptoExamples-in-JavaScript.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "chai": "^4.1.2",
+    "chai-files": "^1.4.0",
+    "grunt": "^1.0.3",
+    "grunt-babel": "^7.0.0",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "mocha": "^5.2.0",
+    "winston": "^3.0.0"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
+  "dependencies": {
+    "keypair": "^1.0.1"
+  }
+}
