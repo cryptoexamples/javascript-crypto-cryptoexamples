@@ -8,3 +8,6 @@ addons:
 cache:
  directories:
    - "node_modules"
+script:
+  - npm test
+  - sonar-scanner
