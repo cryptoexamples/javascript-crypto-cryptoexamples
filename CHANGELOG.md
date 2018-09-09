@@ -7,67 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [0.4.1] - 2018-08-02
-
-### Fixed
-
-- Fixed inclusion of source code links to old files
-
-## [0.4.0] - 2018-08-02
-
-### Changed
-
-- Changed class names to conform with guidelines
-- Added demonstrate-methods for all examples
-- Corrected meta format for file encryption example
-
-### Fixed
-
-- Added missing UTF-8 encoding in assymetric encryption example
-- Fixed file encryption not needing trim anymore
-- Fixed Headings according to guidlines
-- Fixed import statements not expclicit in file encryption example
-
-## [0.3.0] - 2018-07-18
-
-### Changed
-
-- Changed PBKDF2 hash function to SHA-512
-- Increased PBKDF2 salt size to 64 bytes (equal to SHA-512 size)
-- Increased PBKDF2 iterations to 10000
-- Refactored variable names
-- Refactored main methods to call a demonstrate...-method
-
-### Fixed
-
-- Exceptions were logged including the stack trace, now only the localized message is logged
-
-## [0.2.0] - 2018-05-13
-
-### Changed
-
-- Fixed version link in Changelog
-- Refactored examples
-- Updated class comments
-
-### Removed
-
-- Removed easy object oriented examples that used a separate class
-- Removed mentions of the need for unlimited policy files (unlimited is default since JDK / Java SE 9)
-- Removed commented out code
-
-## [0.1.1] - 2018-04-28
-
-### Changed
-
-- fixed Changelog
-
-## [0.1.0] - 2018-04-28
+## [0.1.0] - 2018-09-09
 
 ### Added
 
 - added Changelog
-- added Asymmetric RSA String Encryption
+- added .editorconfig
 
 ## [X.Y.Z] - XXXX-XX-XX (TEMPLATE for new versions)
 
@@ -101,7 +46,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - made some security relevant changes
 - made other security relevant changes
 
-[Unreleased]: https://github.com/cryptoexamples/java-crypto-examples/compare/v0.4.1...HEAD
+[unreleased]: https://github.com/cryptoexamples/java-crypto-examples/compare/v0.4.1...HEAD
 [0.4.1]: https://github.com/cryptoexamples/java-crypto-examples/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/cryptoexamples/java-crypto-examples/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/cryptoexamples/java-crypto-examples/compare/v0.2.0...v0.3.0

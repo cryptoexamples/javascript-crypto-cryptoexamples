@@ -1,4 +1,3 @@
-import { deriveKey, encryptFile, decryptFile } from "./fileencrypt";
 var chai = require("chai"),
   mocha = require("mocha"),
   crypto = require("crypto"),
