@@ -1,0 +1,22 @@
+<testsuite name="Mocha Tests" tests="18" failures="1" errors="1" skipped="0" timestamp="Sun, 09 Sep 2018 15:38:44 GMT" time="0.017">
+<testcase classname="ExampleAsymmetricStringEncryption allInOne crypto Test runs" name="decrypted String should be equal to original String" time="0.002"><failure>expected &#x27;Text that is going to be sent over an insecure channel and must be encrypted at all costs!&#x27; to equal undefined
+AssertionError: expected &#x27;Text that is going to be sent over an insecure channel and must be encrypted at all costs!&#x27; to equal undefined
+    at Context.&#x3C;anonymous&#x3E; (build\trans\allinone\ExampleAsymmetricStringEncryption.test.js:11:15)</failure></testcase>
+<testcase classname="fileencrypt allInOne crypto Test runs" name="running code, should create a file &#x27;file.enc.txt&#x27;" time="0.001"/>
+<testcase classname="fileencrypt allInOne crypto Test runs" name="running code, should create a file &#x27;file.dec.txt&#x27;" time="0"/>
+<testcase classname="fileencrypt allInOne crypto Test runs" name="decrypted file should be equal to original file" time="0"/>
+<testcase classname="Stringencrypt crypto Test runs" name="calling encryptString without iv, should throw an error" time="0.001"/>
+<testcase classname="Stringencrypt crypto Test runs" name="encryptString should return a String" time="0.001"/>
+<testcase classname="Stringencrypt crypto Test runs" name="calling decryptString without iv, should throw an error" time="0"/>
+<testcase classname="Stringencrypt crypto Test runs" name="decryptString should retrun a String" time="0"/>
+<testcase classname="Stringencrypt crypto Test runs" name="decryptString&#x27;s return should be equal to original String" time="0"/>
+<testcase classname="Stringencryptasync crypto Test runs" name="pubEncryptString should return a String" time="0"/>
+<testcase classname="Stringencryptasync crypto Test runs" name="privDecryptString should return a String" time="0.002"/>
+<testcase classname="Stringencryptasync crypto Test runs" name="privDecryptString&#x27;s return should be equal to original String" time="0.003"/>
+<testcase classname="Stringencryptpw crypto Test runs" name="calling encryptString without iv, should throw an error" time="0"/>
+<testcase classname="Stringencryptpw crypto Test runs" name="encryptString should return a String" time="0"/>
+<testcase classname="Stringencryptpw crypto Test runs" name="calling decryptString without iv, should throw an error" time="0.001"/>
+<testcase classname="Stringencryptpw crypto Test runs" name="decryptString should retrun a String" time="0"/>
+<testcase classname="Stringencryptpw crypto Test runs" name="decryptString&#x27;s return should be equal to original String" time="0"/>
+<testcase classname="Stringhash crypto Test runs" name="hashString shoud work with an array" time="0"/>
+</testsuite>

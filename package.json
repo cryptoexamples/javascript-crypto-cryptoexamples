@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./build/trans/**/*.test.js"
+    "test": "nyc mocha ./build/trans/**/*.test.js --reporter=xunit --reporter-options output=codeanalysis/unittests.xml"
   },
   "repository": {
     "type": "git",
@@ -23,12 +23,24 @@
     "grunt-contrib-clean": "^1.1.0",
     "grunt-contrib-copy": "^1.0.0",
     "mocha": "^5.2.0",
+    "nyc": "^13.0.1",
     "winston": "^3.0.0"
   },
   "babel": {
     "presets": [
       "env"
     ]
+  },
+  "nyc": {
+    "check-coverage": true,
+    "per-file": true,
+    "reporter": [
+      "lcovonly",
+      "text"
+    ],
+    "temp-dir": "./codeanalysis-tmp",
+    "temp-directory": "./codeanalysis/temp",
+    "report-dir": "./codeanalysis"
   },
   "dependencies": {
     "keypair": "^1.0.1"

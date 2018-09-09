@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+# [0.1.1] - 2018-09-09
+
+### Added
+
+- added istanbul for line coverage tests
+
+### Changed
+
+- changed package json to generate test reports from mocha and istanbul
+
 ## [0.1.0] - 2018-09-09
 
 ### Added
