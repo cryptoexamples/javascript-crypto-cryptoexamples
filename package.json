@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "nyc mocha ./build/trans/**/*.test.js --reporter=xunit --reporter-options output=codeanalysis/unittests.xml"
+    "test":
+      "nyc mocha build/test/**/*.test.js --reporter=xunit --reporter-options output=codeanalysis/unittests.xml"
   },
   "repository": {
     "type": "git",
-    "url": "https://gilbert.informatik.uni-stuttgart.de/minderki/CryptoExamples-in-JavaScript.git"
+    "url":
+      "https://gilbert.informatik.uni-stuttgart.de/minderki/CryptoExamples-in-JavaScript.git"
   },
   "author": "",
   "license": "ISC",
@@ -27,17 +29,12 @@
     "winston": "^3.0.0"
   },
   "babel": {
-    "presets": [
-      "env"
-    ]
+    "presets": ["env"]
   },
   "nyc": {
     "check-coverage": true,
     "per-file": true,
-    "reporter": [
-      "lcovonly",
-      "text"
-    ],
+    "reporter": ["lcovonly", "text"],
     "temp-dir": "./codeanalysis-tmp",
     "temp-directory": "./codeanalysis/temp",
     "report-dir": "./codeanalysis"

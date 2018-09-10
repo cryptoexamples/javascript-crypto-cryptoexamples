@@ -23,6 +23,12 @@ module.exports = function(grunt) {
             cwd: "src/",
             src: ["**/*.js"],
             dest: "build/trans"
+          },
+          {
+            expand: true,
+            cwd: "test/",
+            src: ["**/*.test.js"],
+            dest: "build/test"
           }
         ]
       }
