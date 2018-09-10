@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+# [0.1.2] - 2018-09-10
+
+### Added
+
+- file.txt for testing
+
+### Changed
+
+- travis.yml and sonar-project.properties so that sonar works
+- location of test 
 
 # [0.1.1] - 2018-09-09
 
