@@ -1,3 +1,5 @@
+import "../../trans/allinone/ExampleFileEncryption";
+
 var chai = require("chai"),
   mocha = require("mocha"),
   crypto = require("crypto"),
