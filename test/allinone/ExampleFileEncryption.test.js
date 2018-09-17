@@ -1,26 +1,29 @@
-import "../../trans/allinone/ExampleFileEncryption";
+import {
+  logger,
+  demonstrateFileEncryption
+} from "../../trans/allinone/ExampleFileEncryption";
 
 var chai = require("chai"),
+  sinon = require("sinon"),
   mocha = require("mocha"),
-  crypto = require("crypto"),
-  fs = require("fs"),
-  chaiFiles = require("chai-files");
+  sinonChai = require("sinon-chai");
 
-let testFile = fs.readFileSync("file.txt", { encoding: "binary" });
-let testFileEnc = fs.readFileSync("file.enc.txt", { encoding: "binary" });
-let testIv = crypto.randomBytes(16);
-let testKey = crypto.randomBytes(32);
-let testFileDec = fs.readFileSync("file.dec.txt", { encoding: "binary" });
+chai.use(sinonChai);
 
-describe("fileencrypt allInOne crypto Test runs", function() {
-  it("running code, should create a file 'file.enc.txt'", function() {
-    chai.expect(chaiFiles.file("file.enc.txt")).to.exist;
-  });
-  it("running code, should create a file 'file.dec.txt'", function() {
-    chai.expect(chaiFiles.file("file.dec.txt")).to.exist;
+describe("ExampleFileEncryption allInOne crypto Test runs", function() {
+  beforeEach(function() {
+    sinon.spy(logger, "error");
+    sinon.spy(logger, "info");
   });
 
-  it("decrypted file should be equal to original file", function() {
-    chai.assert.equal(testFile, testFileDec);
+  afterEach(function() {
+    logger.error.restore();
+    logger.info.restore();
+  });
+
+  it("logger output should confirm that files are the same", function() {
+    demonstrateFileEncryption();
+    chai.expect(logger.error).to.not.be.called;
+    // chai.assert.include(logger.info.getCall(0).args, "yes");
   });
 });

@@ -1,15 +1,18 @@
 import {
+  deriveKey,
   encryptString,
   decryptString
-} from "../../trans/objectOriented/stringencrypt";
+} from "../../trans/objectOriented/ExampleStringEncryptionPasswordBased";
 var chai = require("chai"),
   mocha = require("mocha"),
   crypto = require("crypto");
 
 const testIv = crypto.randomBytes(16);
 const testKey = crypto.randomBytes(32);
+const testpw = crypto.randomBytes(48);
+const testDerivedKey = Buffer.from(deriveKey(testpw, 32), "base64");
 
-describe("Stringencrypt crypto Test runs", function() {
+describe("objectOriented ExampleStringEncryptionPasswordBased crypto Test runs", function() {
   it("calling encryptString without iv, should throw an error", function() {
     chai
       .expect(() => {
@@ -39,7 +42,11 @@ describe("Stringencrypt crypto Test runs", function() {
   it("decryptString's return should be equal to original String", function() {
     chai.assert.equal(
       "test",
-      decryptString(encryptString("test", testKey, testIv), testKey, testIv)
+      decryptString(
+        encryptString("test", testDerivedKey, testIv),
+        testDerivedKey,
+        testIv
+      )
     );
   });
 });

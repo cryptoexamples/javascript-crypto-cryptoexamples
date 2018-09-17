@@ -74,9 +74,10 @@ try {
   // the password used for derviation of a key, assign your password here
   // if none is assigned a random one is generated
   let password = null;
-  password === null
-    ? (password = crypto.randomBytes(48).toString("utf8"))
-    : (password = password);
+  if (password === null) {
+    password = crypto.randomBytes(48).toString("utf8");
+  }
+
   // derive key
   // keylength adheres to the "ECRYPT-CSA Recommendations" on "www.keylength.com"
   let key = deriveKey(password, 32);

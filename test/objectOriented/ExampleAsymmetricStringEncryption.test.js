@@ -1,13 +1,14 @@
 import {
   pubEncryptString,
   privDecryptString
-} from "../../trans/objectOriented/stringencryptasync";
+} from "../../trans/objectOriented/ExampleAsymmetricStringEncryption";
+
 var chai = require("chai"),
   mocha = require("mocha"),
   keypair = require("keypair");
 
 let pair = keypair(2048);
-describe("Stringencryptasync crypto Test runs", function() {
+describe("objectOriented ExampleAsymmetricStringEncryption crypto Test runs", function() {
   it("pubEncryptString should return a String", function() {
     chai.should();
     pubEncryptString("test", pair["public"]).should.be.a("string");

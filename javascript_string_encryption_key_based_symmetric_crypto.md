@@ -8,11 +8,7 @@ references: [
     # Place a list of references used to create and/or understand this example.
     {
         url: "https://nodejs.org/api/crypto.html",
-        description: "Node.js Crypto",
-        url: "https://github.com/winstonjs/winston",
-        description: "Winston"
-        url: "https://babeljs.io/",
-        description: "Babel compiler"
+        description: "Node.js Crypto"
     }
 ]
 authors: [
@@ -28,25 +24,31 @@ current_reviews: [
 
 ]
 # Indicates when this example was last updated/created. Reviews don't change this.
-last_updated: "2018-08-12"
-tags: [JavaScript, Node.js, AES, CTR, Salt, AEAD]
+last_updated: "2018-09-17"
+tags: [JavaScript, Node.js, node-crypto, AES, GCM, Salt, AEAD] 
 ---
 
 ## Use cases
 
--   Random key generation
--   String encryption
+- Random key generation
+- String encryption
 
 ## node version
 
--   8.11.2
+- 8.11.2
 
 ## JavaScript Version
 
--   ECMAScript 6
--   In order to run this code, one hast to build it with an ECMAScript 6 compiler like Babel. see "references".
+- ECMAScript 6 and higher
+- In order to run this code, one hast to build it with an ECMAScript 6 compiler like Babel. see "installation".
 
-## Example Code for JavaScript String Encryption with key generation using AES-CTR
+## Installation
+
+- crypto is is a native node module, no installation is required
+- [Babel](https://babeljs.io/)
+- [Winston logger](https://github.com/winstonjs/winston)
+
+## Example Code for JavaScript String Encryption with key generation using AES-GCM
 
 ```js
 {% include_relative src/allinone/crypto/ExampleStringEncryptionKeyBased.java %}

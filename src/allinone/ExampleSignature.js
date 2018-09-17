@@ -5,54 +5,53 @@
  * - sha-512 digest and RSA encryption
  * - Utf8 Encoding of Strings
  * - Base64 String encoding of Signature
- * - Logging
+ * - Logging of exceptions
  */
 var crypto = require("crypto"),
-	// TODO: eine schwäche von krypto es muss ein besserer keypair generator her
-	keypair = require("keypair"),
-	winston = require("winston");
+  keypair = require("keypair"),
+  winston = require("winston");
 
-// to enable Logging, having winston logger installed is required
 const logger = winston.createLogger({
-	format: winston.format.combine(
-		winston.format.splat(),
-		winston.format.simple()
-	),
-	transports: [
-		new winston.transports.Console({
-			format: winston.format.simple(),
-			handleExceptions: true
-		})
-	]
+  format: winston.format.combine(
+    winston.format.splat(),
+    winston.format.simple()
+  ),
+  transports: [
+    new winston.transports.Console({
+      format: winston.format.simple(),
+      handleExceptions: true
+    })
+  ]
 });
 
 const demonstrateSignature = () => {
-	try {
-		// replace with your actual String
-		let exampleString =
-			"Text that should be signed to prevent unknown tampering with its content.";
-		// generate keyPair, in asynchronous encryption both keys need to be related
-		// and cannot be independently generated keys
-		// keylength adheres to the "ECRYPT-CSA Recommendations" on "www.keylength.com"
-		var pair = keypair(3072);
-		// sign String
-		var signerObject = crypto.createSign("RSA-SHA512");
-		signerObject.update(exampleString);
-		var signature = signerObject.sign(pair["private"], "base64");
-		//verify String
-		var verifierObject = crypto.createVerify("RSA-SHA512");
-		verifierObject.update(exampleString);
-		var verified = verifierObject.verify(
-			pair["public"],
-			signature,
-			"base64"
-		);
+  try {
+    // replace with your actual String
+    let exampleString =
+      "Text that should be signed to prevent unknown tampering with its content.";
+    // generate a keypair, in asynchronous encryption both keys need to be related
+    // and cannot be independently generated keys
+    // keylength adheres to the "ECRYPT-CSA Recommendations" on "www.keylength.com"
+    // not needed if you already posses public and private key
+    var pair = keypair(3072);
 
-		logger.info("is signature ok?: %s", verified);
-	} catch (error) {
-		logger.error(error.message);
-	}
+    // sign String
+    var signerObject = crypto.createSign("RSA-SHA512");
+    signerObject.update(exampleString);
+    var signature = signerObject.sign(pair["private"], "base64");
+
+    //verify String
+    var verifierObject = crypto.createVerify("RSA-SHA512");
+    verifierObject.update(exampleString);
+    var verified = verifierObject.verify(pair["public"], signature, "base64");
+
+    logger.info("is signature ok?: %s", verified);
+  } catch (error) {
+    logger.error(error.message);
+  }
 };
 
-// run the exampleFunction
 demonstrateSignature();
+
+// for unit testing purposes
+module.exports = { demonstrateSignature, logger };

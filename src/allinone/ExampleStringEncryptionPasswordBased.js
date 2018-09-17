@@ -5,13 +5,12 @@
  * - derivation of a key
  * - Utf8 Encoding of Strings
  * - Base64 String encoding of byte-Arrays
- * - Logging
+ * - Logging of exceptions
  */
 
 var crypto = require("crypto"),
   winston = require("winston");
 
-// to enable Logging, having winston logger installed is required
 const logger = winston.createLogger({
   format: winston.format.combine(
     winston.format.splat(),
@@ -34,15 +33,13 @@ const demonstratePasswordBasedSymmetricEncryption = () => {
     // the password used for derviation of a key, assign your password here
     // if none is assigned a random one is generated
     let password = null;
-    password === null
-      ? (password = crypto.randomBytes(48).toString("utf8"))
-      : (password = password);
-
-    // create random salt
-    let salt = crypto.randomBytes(128);
+    if (password === null) {
+      password = crypto.randomBytes(48).toString("utf8");
+    }
 
     // derive key with password and salt
     // keylength adheres to the "ECRYPT-CSA Recommendations" on "www.keylength.com"
+    let salt = crypto.randomBytes(128);
     let derivedKey = crypto.pbkdf2Sync(password, salt, 10000, 32, "sha256");
 
     // create random initialization vector
@@ -69,5 +66,7 @@ const demonstratePasswordBasedSymmetricEncryption = () => {
   }
 };
 
-// run the exampleFunction
 demonstratePasswordBasedSymmetricEncryption();
+
+// for unit testing purposes
+module.exports = { demonstratePasswordBasedSymmetricEncryption, logger };

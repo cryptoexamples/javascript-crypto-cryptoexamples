@@ -28,22 +28,28 @@ current_reviews: [
 
 ]
 # Indicates when this example was last updated/created. Reviews don't change this.
-last_updated: "2018-08-012"
-tags: [JavaScript, Node.js hash, SHA, SHA-512]
+last_updated: "2018-09-017"
+tags: [JavaScript, Node.js, node-crypto hash, SHA, SHA-512]
 ---
 
 ## Use cases
 
--   Verifying if a string has been changed
+- Verifying if a string has been changed
 
 ## node version
 
--   8.11.2
+- 8.11.2
 
 ## JavaScript Version
 
--   ECMAScript 6
--   In order to run this code, one hast to build it with an ECMAScript 6 compiler like Babel. see "references".
+- ECMAScript 6 and higher
+- In order to run this code, one hast to build it with an ECMAScript 6 compiler like Babel. see "installation".
+
+## Installation
+
+- crypto is is a native node module, no installation is required
+- [Babel](https://babeljs.io/)
+- [Winston logger](https://github.com/winstonjs/winston)
 
 ## Example Code for JavaScript String Hashing using SHA-512, BASE64 and UTF-8 encoding
 

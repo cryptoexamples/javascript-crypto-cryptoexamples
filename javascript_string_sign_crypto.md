@@ -9,15 +9,7 @@ references: [
     {
        
         url: "https://nodejs.org/api/crypto.html",
-        description: "Node.js Crypto",
-        url: "https://github.com/juliangruber/keypair",
-        description: "Keypair",
-        url: "https://github.com/winstonjs/winston",
-        description: "Winston",
-        url: "https://babeljs.io/",
-        description: "Babel compiler"
-       
-    
+        description: "Node.js Crypto",  
     }
 ]
 authors: [
@@ -33,22 +25,29 @@ current_reviews: [
 
 ]
 # Indicates when this example was last updated/created. Reviews don't change this.
-last_updated: "2018-08-12"
-tags: [JavaScript, Node.js, hash, SHA, SHA-512]
+last_updated: "2018-09-17"
+tags: [JavaScript, Node.js, node-crypto, hash, SHA, SHA-512]
 ---
 
 ## Use cases
 
--   verifying if a string has been changed
+- verifying if a string has been changed
 
 ## node version
 
--   8.11.2
+- 8.11.2
 
 ## JavaScript Version
 
--   ECMAScript 6
--   In order to run this code, one hast to build it with an ECMAScript 6 compiler like Babel. see "references".
+- ECMAScript 6
+- In order to run this code, one hast to build it with an ECMAScript 6 compiler like Babel. see "installation".
+
+## Installation
+
+- crypto is is a native node module, no installation is required
+- [Babel](https://babeljs.io/)
+- [Winston logger](https://github.com/winstonjs/winston)
+- [keypair](https://github.com/juliangruber/keypair)
 
 ## Example Code for JavaScript String Signing using SHA-512, RSA 3072, BASE64 and UTF-8 encoding
 

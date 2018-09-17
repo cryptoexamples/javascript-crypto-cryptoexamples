@@ -12,12 +12,7 @@ references: [
         url: "https://nodejs.org/api/stream.html",
         description: "Node.js Stream",
         url: "https://nodejs.org/api/fs.html",
-        description: "Node.js filesystem",
-        url: "https://github.com/winstonjs/winston",
-        description: "Winston",
-        url: "https://babeljs.io/",
-        description: "Babel compiler"
-
+        description: "Node.js filesystem"
        
     }
 ]
@@ -34,24 +29,31 @@ current_reviews: [
 
 ]
 # Indicates when this example was last updated/created. Reviews don't change this.
-last_updated: "2018-08-012"
-tags: [JavaScript, Node.js, AES, CTR, PBKDF2, Salt, AEAD]
+last_updated: "2018-09-017"
+tags: [JavaScript, Node.js, node-crypto, AES, GCM, PBKDF2, Salt, AEAD] A
 ---
 
 ## Use cases
 
--   Password based symmetric encryption of a file
+- Password based encryption of a file
+- Previously shared common secret (password)
 
 ## node version
 
--   8.11.2
+- 8.11.2
 
 ## JavaScript Version
 
--   ECMAScript 6
--   In order to run this code, one hast to build it with an ECMAScript 6 compiler like Babel. see "references".
+- ECMAScript 6 and higher
+- In order to run this code, one hast to build it with an ECMAScript 6 compiler like Babel. see "installation".
 
-## Example Code for JavaScript Password based symmetric file encryption using AES-CTR and PBKDF2
+## Installation
+
+- crypto is is a native node module, no installation is required
+- [Babel](https://babeljs.io/)
+- [Winston logger](https://github.com/winstonjs/winston)
+
+## Example Code for JavaScript Password based symmetric file encryption using AES-GCM and PBKDF2
 
 ```js
 {% include_relative src/allinone/crypto/ExampleFileEncryption.js %}

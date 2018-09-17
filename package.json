@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test":
-      "nyc mocha build/test/**/*.test.js --reporter=xunit --reporter-options output=codeanalysis/unittests.xml"
+    "test": "nyc mocha --timeout 50000 build/test/**/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +25,8 @@
     "grunt-contrib-copy": "^1.0.0",
     "mocha": "^5.2.0",
     "nyc": "^13.0.1",
+    "sinon": "^6.3.3",
+    "sinon-chai": "^3.2.0",
     "winston": "^3.0.0"
   },
   "babel": {
