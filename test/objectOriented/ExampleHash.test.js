@@ -1,4 +1,5 @@
-import { hashStrings } from "../../trans/objectOriented/ExampleHash";
+var testee = require("../../src/objectOriented/ExampleHash.js");
+
 var chai = require("chai"),
   mocha = require("mocha"),
   crypto = require("crypto");
@@ -9,7 +10,7 @@ describe("objectOriented ExampleHash crypto Test runs", function() {
   it("hashString shoud work with an array", function() {
     chai
       .expect(() => {
-        hashStrings(testArray);
+        testee.hashStrings(testArray);
       })
       .to.not.throw();
   });

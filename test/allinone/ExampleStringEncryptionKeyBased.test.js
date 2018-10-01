@@ -1,7 +1,4 @@
-import {
-  logger,
-  demonstrateKeyBasedSymmetricEncryption
-} from "../../trans/allinone/ExampleStringEncryptionKeyBased";
+var testee = require("../../src/allinone/ExampleStringEncryptionKeyBased.js");
 
 var chai = require("chai"),
   mocha = require("mocha"),
@@ -12,15 +9,15 @@ chai.use(sinonChai);
 
 describe("ExampleStringEncryptionKeyBased allInOne crypto Test runs", function() {
   beforeEach(function() {
-    sinon.spy(logger, "info");
+    sinon.spy(testee.logger, "info");
   });
 
   afterEach(function() {
-    logger.info.restore();
+    testee.logger.info.restore();
   });
 
   it("logger output should confirm that Strings are the same", function() {
-    demonstrateKeyBasedSymmetricEncryption();
-    chai.assert.include(logger.info.getCall(0).args, "yes");
+    testee.demonstrateKeyBasedSymmetricEncryption();
+    chai.assert.include(testee.logger.info.getCall(0).args, "yes");
   });
 });

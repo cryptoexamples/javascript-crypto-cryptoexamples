@@ -1,7 +1,4 @@
-import {
-  logger,
-  demonstrateSignature
-} from "../../trans/allinone/ExampleSignature";
+var testee = require("../../src/allinone/ExampleSignature.js");
 
 var chai = require("chai"),
   sinon = require("sinon"),
@@ -12,15 +9,15 @@ chai.use(sinonChai);
 
 describe("ExampleSignature allInOne crypto Test runs", function() {
   beforeEach(function() {
-    sinon.spy(logger, "info");
+    sinon.spy(testee.logger, "info");
   });
 
   afterEach(function() {
-    logger.info.restore();
+    testee.logger.info.restore();
   });
 
   it("logger output should confirm that Signature is ok", function() {
-    demonstrateSignature();
-    chai.assert.include(logger.info.getCall(0).args, true);
+    testee.demonstrateSignature();
+    chai.assert.include(testee.logger.info.getCall(0).args, true);
   });
 });

@@ -1,7 +1,4 @@
-import {
-  logger,
-  demonstrateFileEncryption
-} from "../../trans/allinone/ExampleFileEncryption";
+var testee = require("../../src/allinone/ExampleFileEncryption.js");
 
 var chai = require("chai"),
   sinon = require("sinon"),
@@ -12,18 +9,18 @@ chai.use(sinonChai);
 
 describe("ExampleFileEncryption allInOne crypto Test runs", function() {
   beforeEach(function() {
-    sinon.spy(logger, "error");
-    sinon.spy(logger, "info");
+    sinon.spy(testee.logger, "error");
+    sinon.spy(testee.logger, "info");
   });
 
   afterEach(function() {
-    logger.error.restore();
-    logger.info.restore();
+    testee.logger.error.restore();
+    testee.logger.info.restore();
   });
 
   it("logger output should confirm that files are the same", function() {
-    demonstrateFileEncryption();
-    chai.expect(logger.error).to.not.be.called;
+    testee.demonstrateFileEncryption();
+    chai.expect(testee.logger.error).to.not.be.called;
     // chai.assert.include(logger.info.getCall(0).args, "yes");
   });
 });

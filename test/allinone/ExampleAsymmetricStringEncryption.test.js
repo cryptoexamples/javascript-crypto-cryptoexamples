@@ -1,7 +1,4 @@
-import {
-  logger,
-  demonstrateKeyBasedAsymmetricEncryption
-} from "../../trans/allinone/ExampleAsymmetricStringEncryption";
+var testee = require("../../src/allinone/ExampleAsymmetricStringEncryption.js");
 
 var chai = require("chai"),
   mocha = require("mocha"),
@@ -12,15 +9,15 @@ chai.use(sinonChai);
 
 describe("ExampleAsymmetricStringEncryption allInOne crypto Test runs", function() {
   beforeEach(function() {
-    sinon.spy(logger, "info");
+    sinon.spy(testee.logger, "info");
   });
 
   afterEach(function() {
-    logger.info.restore();
+    testee.logger.info.restore();
   });
 
   it("logger output should confirm that Strings are the same", function() {
-    demonstrateKeyBasedAsymmetricEncryption();
-    chai.assert.include(logger.info.getCall(0).args, "yes");
+    testee.demonstrateKeyBasedAsymmetricEncryption();
+    chai.assert.include(testee.logger.info.getCall(0).args, "yes");
   });
 });

@@ -1,7 +1,4 @@
-import {
-  pubEncryptString,
-  privDecryptString
-} from "../../trans/objectOriented/ExampleAsymmetricStringEncryption";
+var testee = require("../../src/objectOriented/ExampleAsymmetricStringEncryption.js");
 
 var chai = require("chai"),
   mocha = require("mocha"),
@@ -11,22 +8,24 @@ let pair = keypair(2048);
 describe("objectOriented ExampleAsymmetricStringEncryption crypto Test runs", function() {
   it("pubEncryptString should return a String", function() {
     chai.should();
-    pubEncryptString("test", pair["public"]).should.be.a("string");
+    testee.pubEncryptString("test", pair["public"]).should.be.a("string");
   });
 
   it("privDecryptString should return a String", function() {
     chai.should();
-    privDecryptString(
-      pubEncryptString("test", pair["public"]),
-      pair["private"]
-    ).should.be.a("string");
+    testee
+      .privDecryptString(
+        testee.pubEncryptString("test", pair["public"]),
+        pair["private"]
+      )
+      .should.be.a("string");
   });
 
   it("privDecryptString's return should be equal to original String", function() {
     chai.assert.equal(
       "test",
-      privDecryptString(
-        pubEncryptString("test", pair["public"]),
+      testee.privDecryptString(
+        testee.pubEncryptString("test", pair["public"]),
         pair["private"]
       )
     );

@@ -1,7 +1,4 @@
-import {
-  encryptString,
-  decryptString
-} from "../../trans/objectOriented/ExampleStringEncryptionKeyBased";
+var testee = require("../../src/objectOriented/ExampleStringEncryptionKeyBased.js");
 
 var chai = require("chai"),
   mocha = require("mocha"),
@@ -14,33 +11,39 @@ describe("objectOriented ExampleAsymmetricStringEncryption Test runs", function(
   it("calling encryptString without iv, should throw an error", function() {
     chai
       .expect(() => {
-        encryptString("test", testKey);
+        testee.encryptString("test", testKey);
       })
       .to.throw();
   });
 
   it("encryptString should return a String", function() {
     chai.should();
-    encryptString("test", testKey, testIv).should.be.a("string");
+    testee.encryptString("test", testKey, testIv).should.be.a("string");
   });
 
   it("calling decryptString without iv, should throw an error", function() {
     chai
       .expect(() => {
-        decryptString("test", testKey);
+        testee.decryptString("test", testKey);
       })
       .to.throw();
   });
 
   it("decryptString should retrun a String", function() {
     chai.should();
-    decryptString("encryptedString", testKey, testIv).should.be.a("string");
+    testee
+      .decryptString("encryptedString", testKey, testIv)
+      .should.be.a("string");
   });
 
   it("decryptString's return should be equal to original String", function() {
     chai.assert.equal(
       "test",
-      decryptString(encryptString("test", testKey, testIv), testKey, testIv)
+      testee.decryptString(
+        testee.encryptString("test", testKey, testIv),
+        testKey,
+        testIv
+      )
     );
   });
 });
