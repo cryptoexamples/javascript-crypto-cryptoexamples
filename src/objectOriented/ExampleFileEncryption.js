@@ -91,18 +91,15 @@ try {
 
   // start to encrypt/decrypt file content via read and write streams and piping
   // with an asynchronous control flow
-  encryptFile("./file2.txt", "./file2.enc.txt", key, iv).on("finish", () => {
-    decryptFile("./file2.enc.txt", "./file2.dec.txt", key, iv).on(
-      "finish",
-      () => {
-        var input = fs.readFileSync("file2.txt");
-        var output = fs.readFileSync("file2.dec.txt");
-        logger.info(
-          "Decrypted file content and original file content are the same: %s",
-          Buffer.compare(output, input) === 0 ? "yes" : "no"
-        );
-      }
-    );
+  encryptFile("file.txt", "file.enc.txt", key, iv).on("finish", () => {
+    decryptFile("file.enc.txt", "file.dec.txt", key, iv).on("finish", () => {
+      var input = fs.readFileSync("file.txt");
+      var output = fs.readFileSync("file.dec.txt");
+      logger.info(
+        "Decrypted file content and original file content are the same: %s",
+        Buffer.compare(output, input) === 0 ? "yes" : "no"
+      );
+    });
   });
 } catch (error) {
   logger.error(error.message);
