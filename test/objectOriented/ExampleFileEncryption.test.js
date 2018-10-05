@@ -6,11 +6,11 @@ var chai = require("chai"),
   fs = require("fs"),
   chaiFiles = require("chai-files");
 
-let testFile = fs.readFileSync("file2.txt", { encoding: "binary" });
-let testFileEnc = fs.readFileSync("file2.enc.txt", { encoding: "binary" });
+let testFile = fs.readFileSync("file.txt", { encoding: "binary" });
+let testFileEnc = fs.readFileSync("file.enc.txt", { encoding: "binary" });
 let testIv = crypto.randomBytes(16);
 let testKey = crypto.randomBytes(32);
-let testFileDec = fs.readFileSync("file2.dec.txt", { encoding: "binary" });
+let testFileDec = fs.readFileSync("file.dec.txt", { encoding: "binary" });
 
 describe("fileencrypt forge Test runs", function() {
   it("calling function without iv, should throw an error", function() {
@@ -29,10 +29,10 @@ describe("fileencrypt forge Test runs", function() {
       .to.throw();
   });
   it("running code, should create a file 'file.enc.txt'", function() {
-    chai.expect(chaiFiles.file("file2.enc.txt")).to.exist;
+    chai.expect(chaiFiles.file("file.enc.txt")).to.exist;
   });
   it("running code, should create a file 'file.dec.txt'", function() {
-    chai.expect(chaiFiles.file("file2.dec.txt")).to.exist;
+    chai.expect(chaiFiles.file("file.dec.txt")).to.exist;
   });
 
   it("decrypted file should be equal to original file", function() {
