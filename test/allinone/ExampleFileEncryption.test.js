@@ -18,9 +18,10 @@ describe("ExampleFileEncryption allInOne crypto Test runs", function() {
     testee.logger.info.restore();
   });
 
-  it("logger output should confirm that files are the same", function() {
+  it("logger output should not log error", function() {
     testee.demonstrateFileEncryption();
-    chai.expect(testee.logger.error).to.not.be.called;
-    // chai.assert.include(logger.info.getCall(0).args, "yes");
+
+    // chai.expect(testee.logger.error).to.not.be.called;
+    chai.assert.include(testee.logger.info.getCall(0).args, "yes");
   });
 });

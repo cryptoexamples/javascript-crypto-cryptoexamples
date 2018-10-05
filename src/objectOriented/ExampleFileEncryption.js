@@ -1,6 +1,11 @@
 /**
- * This Example shows how to encrypt und decrypt a file with a password derived key and file Streams.
- * The whole Process is asynchronous
+ * An example for encrypting and decrypting of a file featuring:
+ * - An out of the box working Example
+ * - Importable Method/s for encrypt/decrypt
+ * - password generation
+ * - key derivation
+ * - Utf8 Encoding of Strings
+ * - Base64 String encoding of byte-Arrays
  */
 
 var crypto = require("crypto"),
@@ -22,26 +27,51 @@ const logger = winston.createLogger({
   ]
 });
 
-const encryptFile = (err, derivedKey, iv) => {
+/**
+ * A method to encrypt filecontent with a synchronous key and write the encrypted
+ * content to an output file. Note that in order to correctly decrypt the file
+ * content, the same key and iv (initialization vector) have to be used
+ *
+ * @param {String} inputPath The Path to the file with the content to encrypt.
+ * @param {String} outputPath The Path to the file where the encrypted contet is written to.
+ * @param {Buffer} key The key in binary form, which is used for encryption.
+ * @param {Buffer} iv The intitalization vector for the block cipher mode
+ */
+const encryptFile = (inputPath, outputPath, key, iv) => {
   // input file
-  let inputFile = fs.createReadStream("./file.txt");
+  let inputFile = fs.createReadStream(inputPath);
   // encrypt content
-  let encrypt = crypto.createCipheriv("aes-256-ctr", derivedKey, iv);
+  let encrypt = crypto.createCipheriv("aes-256-ctr", key, iv);
   // write file
-  let outputFile = fs.createWriteStream("./file.enc.txt");
+  let outputFile = fs.createWriteStream(outputPath);
   // start pipe
   inputFile.pipe(encrypt).pipe(outputFile);
+  // return the writeStream for synchronization purposes
+  return outputFile;
 };
 
-const decryptFile = (err, derivedKey, iv) => {
+/**
+ * A method to decrypt filecontent with a synchronous key and write the decrypted
+ * content to an output file. note that in vorder to correctly decrypt the file
+ * content, the key and iv (initialization vector)
+ * must be the same as the key and iv used with encryption
+ *
+ * @param {String} inputPath The Path to the file with the content to decrypt.
+ * @param {String} outputPath The Path to the file where the decrypted contet is written to.
+ * @param {Buffer} key The key in binary form, which is used for encryption.
+ * @param {Buffer} iv The intitalization vector for the block cipher mode
+ */
+const decryptFile = (inputPath, outputPath, key, iv) => {
   // input file
-  let inputFile = fs.createReadStream("./file.enc.txt");
+  let inputFile = fs.createReadStream(inputPath);
   // encrypt content
-  let decrypt = crypto.createDecipheriv("aes-256-ctr", derivedKey, iv);
+  let decrypt = crypto.createDecipheriv("aes-256-ctr", key, iv);
   // write file
-  let outputFile = fs.createWriteStream("./file.dec.txt");
+  let outputFile = fs.createWriteStream(outputPath);
   // start pipe
   inputFile.pipe(decrypt).pipe(outputFile);
+  // return the writeStream for synchronization purposes
+  return outputFile;
 };
 
 try {
@@ -59,13 +89,21 @@ try {
   // create random initialization vector
   let iv = crypto.randomBytes(16);
 
-  // stream file content to a decipher and afterwards to an output file
-  decryptFile(err, derivedKey, iv);
-
-  logger.info(
-    "Decrypted file content and original file content are the same: %s",
-    Buffer.compare(output, input) === 0 ? "yes" : "no"
-  );
+  // start to encrypt/decrypt file content via read and write streams and piping
+  // with an asynchronous control flow
+  encryptFile("./file2.txt", "./file2.enc.txt", key, iv).on("finish", () => {
+    decryptFile("./file2.enc.txt", "./file2.dec.txt", key, iv).on(
+      "finish",
+      () => {
+        var input = fs.readFileSync("file2.txt");
+        var output = fs.readFileSync("file2.dec.txt");
+        logger.info(
+          "Decrypted file content and original file content are the same: %s",
+          Buffer.compare(output, input) === 0 ? "yes" : "no"
+        );
+      }
+    );
+  });
 } catch (error) {
   logger.error(error.message);
 }

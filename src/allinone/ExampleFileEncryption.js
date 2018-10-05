@@ -43,35 +43,26 @@ const demonstrateFileEncryption = () => {
     // create random initialization vector
     let iv = crypto.randomBytes(16);
 
-    // create Streams for file reading, encryption and decryption
-    let inputFile = fs.createReadStream("./file.txt");
-    let encrypt = crypto.createCipheriv("aes-256-gcm", derivedKey, iv);
-    let outputFileEnc = fs.createWriteStream("./file.enc.txt");
-    let decrypt = crypto.createDecipheriv("aes-256-gcm", derivedKey, iv);
-    let outputFile = fs.createWriteStream("./file.dec.txt");
+    // read and ENCRYPT the filecontent and write it to a encrypted file
+    let inputFile = fs.readFileSync("file.txt");
+    let cipher = crypto.createCipheriv("aes-256-gcm", derivedKey, iv);
+    let encrypted = cipher.update(inputFile, "utf8", "base64");
+    encrypted += cipher.final("base64");
+    let authTag = cipher.getAuthTag();
+    fs.writeFileSync("file.enc.txt", Buffer.from(encrypted, "base64"));
 
-    // start pipe for encryption with an asynchronous control flow
-    inputFile.pipe(encrypt).pipe(outputFileEnc);
-    // wait for the encrypted file to be written
-    outputFileEnc.on("finish", () => {
-      let tag = encrypt.getAuthTag();
-      let inputFileEnc = fs.createReadStream("./file.enc.txt");
-      // start pipe for decryption
-      decrypt.setAuthTag(tag);
-      inputFileEnc.pipe(decrypt).pipe(outputFile);
-    });
+    // DECRYPT the filecontent and write it to a decrypted file
+    let decipher = crypto.createDecipheriv("aes-256-gcm", derivedKey, iv);
+    decipher.setAuthTag(authTag);
+    let decrypted = decipher.update(encrypted, "base64", "utf8");
+    decrypted += decipher.final("utf8");
+    decrypted = Buffer.from(decrypted, "utf8");
+    fs.writeFileSync("file.dec.txt", decrypted);
 
-    // wait for all files to be written and read input file and output file for
-    // comparison
-    outputFile.on("finish", () => {
-      let input = fs.readFileSync("file.txt");
-      let output = fs.readFileSync("file.dec.txt");
-
-      logger.info(
-        "Decrypted file content and original file content are the same: %s",
-        Buffer.compare(output, input) === 0 ? "yes" : "no"
-      );
-    });
+    logger.info(
+      "Decrypted file content and original file content are the same: %s",
+      Buffer.compare(decrypted, inputFile) === 0 ? "yes" : "no"
+    );
   } catch (error) {
     logger.error(error.message);
   }
