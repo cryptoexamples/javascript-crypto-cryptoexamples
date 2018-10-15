@@ -51,7 +51,7 @@ tags: [JavaScript, Node.js, node-crypto, AES, GCM, Salt, AEAD]
 ## Example Code for JavaScript String Encryption with key generation using AES-GCM
 
 ```js
-{% include_relative src/allinone/crypto/ExampleStringEncryptionKeyBased.java %}
+{% include_relative src/allinone/ExampleStringEncryptionKeyBased.java %}
 ```
 
 {% include links.html %}
