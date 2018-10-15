@@ -30,7 +30,7 @@ current_reviews: [
 ]
 # Indicates when this example was last updated/created. Reviews don't change this.
 last_updated: "2018-09-017"
-tags: [JavaScript, Node.js, node-crypto, AES, GCM, PBKDF2, Salt, AEAD] A
+tags: [JavaScript, Node.js, node-crypto, AES, GCM, PBKDF2, Salt, AEAD] 
 ---
 
 ## Use cases
@@ -45,12 +45,10 @@ tags: [JavaScript, Node.js, node-crypto, AES, GCM, PBKDF2, Salt, AEAD] A
 ## JavaScript Version
 
 - ECMAScript 6 and higher
-- In order to run this code, one hast to build it with an ECMAScript 6 compiler like Babel. see "installation".
 
 ## Installation
 
 - crypto is is a native node module, no installation is required
-- [Babel](https://babeljs.io/)
 - [Winston logger](https://github.com/winstonjs/winston)
 
 ## Example Code for JavaScript Password based symmetric file encryption using AES-GCM and PBKDF2
