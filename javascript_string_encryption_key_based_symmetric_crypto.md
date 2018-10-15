@@ -40,12 +40,10 @@ tags: [JavaScript, Node.js, node-crypto, AES, GCM, Salt, AEAD]
 ## JavaScript Version
 
 - ECMAScript 6 and higher
-- In order to run this code, one hast to build it with an ECMAScript 6 compiler like Babel. see "installation".
 
 ## Installation
 
 - crypto is is a native node module, no installation is required
-- [Babel](https://babeljs.io/)
 - [Winston logger](https://github.com/winstonjs/winston)
 
 ## Example Code for JavaScript String Encryption with key generation using AES-GCM
