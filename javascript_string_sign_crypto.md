@@ -52,7 +52,7 @@ tags: [JavaScript, Node.js, node-crypto, hash, SHA, SHA-512]
 ## Example Code for JavaScript String Signing using SHA-512, RSA 3072, BASE64 and UTF-8 encoding
 
 ```js
-{% include_relative src/allinone/crypto/ExampleSignature.js %}
+{% include_relative src/allinone/ExampleSignature.js %}
 ```
 
 {% include links.html %}
