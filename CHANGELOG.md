@@ -7,9 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.2.0] - 2018-10-16
+
 ### Fixed
 
 - corrects markdown files
+- corrects versions in changelog
 
 ## [0.1.3] - 2018-09-10
 
@@ -17,33 +20,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - fileexample now runs before unit test
 
-## [0.1.2] - 2018-09-10
-
 ### Added
 
+- added Changelog
+- added .editorconfig
 - file.txt for testing
+- added istanbul for line coverage tests
 
 ### Changed
 
 - travis.yml and sonar-project.properties so that sonar works
 - location of test
-
-## [0.1.1] - 2018-09-09
-
-### Added
-
-- added istanbul for line coverage tests
-
-### Changed
-
 - changed package json to generate test reports from mocha and istanbul
-
-## [0.1.0] - 2018-09-09
-
-### Added
-
-- added Changelog
-- added .editorconfig
 
 ## [X.Y.Z] - XXXX-XX-XX (TEMPLATE for new versions)
 
@@ -77,10 +65,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - made some security relevant changes
 - made other security relevant changes
 
-[unreleased]: https://github.com/cryptoexamples/java-crypto-examples/compare/v0.1.5...HEAD
-[0.4.1]: https://github.com/cryptoexamples/java-crypto-examples/compare/v0.1.4...v0.1.5
-[0.4.0]: https://github.com/cryptoexamples/java-crypto-examples/compare/v0.1.3...v0.1.4
-[0.3.0]: https://github.com/cryptoexamples/java-crypto-examples/compare/v0.1.2...v0.1.3
-[0.2.0]: https://github.com/cryptoexamples/java-crypto-examples/compare/v0.1.1...v0.1.2
-[0.1.1]: https://github.com/cryptoexamples/java-crypto-examples/compare/v0.1.0...v0.1.1
-[0.1.0]: https://github.com/cryptoexamples/java-crypto-examples/releases/tag/v0.1.0
+[unreleased]: https://github.com/cryptoexamples/javascript-crypto-cryptoexamples/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/cryptoexamples/javascript-crypto-cryptoexamples/compare/v0.1.3...v0.2.0
+[0.1.3]: https://github.com/cryptoexamples/javascript-crypto-cryptoexamples/releases/tag/v0.1.3
