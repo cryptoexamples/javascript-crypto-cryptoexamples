@@ -52,7 +52,7 @@ tags: [JavaScript, Node.js, node-crypto hash, SHA, SHA-512]
 ## Example Code for JavaScript String Hashing using SHA-512, BASE64 and UTF-8 encoding
 
 ```js
-{% include_relative src/allinone/crypto/ExampleHash.js %}
+{% include_relative src/allinone/ExampleHash.js %}
 ```
 
 {% include links.html %}
