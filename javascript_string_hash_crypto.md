@@ -28,12 +28,13 @@ current_reviews: [
 
 ]
 # Indicates when this example was last updated/created. Reviews don't change this.
-last_updated: "2018-10-15"
+last_updated: "2018-10-20"
 tags: [JavaScript, Node.js, node-crypto hash, SHA, SHA-512]
 ---
 
 ## Use cases
 
+- Usable on server side
 - Verifying if a string has been changed
 
 ## node version

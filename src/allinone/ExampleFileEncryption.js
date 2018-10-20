@@ -1,6 +1,5 @@
 /**
  * An example for synchronous encryption and decryption of a file
- * with node fileStreams featuring:
  * - an out of the box working Example
  * - generation of a random password
  * - derivation of a key from a password

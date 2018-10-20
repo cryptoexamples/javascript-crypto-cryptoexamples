@@ -29,12 +29,13 @@ current_reviews: [
 
 ]
 # Indicates when this example was last updated/created. Reviews don't change this.
-last_updated: "2018-09-017"
+last_updated: "2018-10-20"
 tags: [JavaScript, Node.js, node-crypto, AES, GCM, PBKDF2, Salt, AEAD] 
 ---
 
 ## Use cases
 
+- Usable on server side
 - Password based encryption of a file
 - Previously shared common secret (password)
 

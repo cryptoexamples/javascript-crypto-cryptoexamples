@@ -35,16 +35,28 @@ const demonstrateKeyBasedAsymmetricEncryption = () => {
     // not needed if you already posses public and private key
     let pair = keypair(3072);
 
-    // encrypt String
+    // ENCRYPT String
     let toEncrypt = Buffer.from(exampleString, "utf8");
     let encrypted = crypto
-      .publicEncrypt(pair["public"], toEncrypt)
+      .publicEncrypt(
+        {
+          key: pair["public"],
+          padding: crypto.constants.RSA_PKCS1_OAEP_PADDING
+        },
+        toEncrypt
+      )
       .toString("base64");
 
-    // decrypt String
+    // DECRYPT String
     let toDecrypt = Buffer.from(encrypted, "base64");
     let decrypted = crypto
-      .privateDecrypt(pair["private"], toDecrypt)
+      .privateDecrypt(
+        {
+          key: pair["private"],
+          padding: crypto.constants.RSA_PKCS1_OAEP_PADDING
+        },
+        toDecrypt
+      )
       .toString("utf8");
     logger.info(
       "Decrypted String and original String are the same: %s",

@@ -45,13 +45,13 @@ const demonstratePasswordBasedSymmetricEncryption = () => {
     // create random initialization vector
     let iv = crypto.randomBytes(16);
 
-    // encrypt the Text
+    // ENCRYPT the Text
     let cipher = crypto.createCipheriv("aes-256-gcm", derivedKey, iv);
     let encrypted = cipher.update(exampleString, "utf8", "base64");
     encrypted += cipher.final("base64");
     let authTag = cipher.getAuthTag();
 
-    // decrypt the Text
+    // DECRYPT the Text
     let decipher = crypto.createDecipheriv("aes-256-gcm", derivedKey, iv);
     decipher.setAuthTag(authTag);
     let decrypted = decipher.update(encrypted, "base64", "utf8");

@@ -39,13 +39,13 @@ const demonstrateKeyBasedSymmetricEncryption = () => {
     // create random initialization vector
     var iv = crypto.randomBytes(16);
 
-    // encrypt the Text
+    // ENCRYPT the Text
     var cipher = crypto.createCipheriv("aes-256-gcm", key, iv);
     var encrypted = cipher.update(exampleString, "utf8", "base64");
     encrypted += cipher.final("base64");
     let authTag = cipher.getAuthTag();
 
-    // decrypt the Text
+    // DECRYPT the Text
     var decipher = crypto.createDecipheriv("aes-256-gcm", key, iv);
     decipher.setAuthTag(authTag);
     var decrypted = decipher.update(encrypted, "base64", "utf8");

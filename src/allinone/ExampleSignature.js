@@ -35,15 +35,30 @@ const demonstrateSignature = () => {
     // not needed if you already posses public and private key
     var pair = keypair(3072);
 
-    // sign String
+    // SIGN String
     var signerObject = crypto.createSign("RSA-SHA512");
     signerObject.update(exampleString);
-    var signature = signerObject.sign(pair["private"], "base64");
+    var signature = signerObject.sign(
+      {
+        key: pair["private"],
+        padding: crypto.constants.RSA_PKCS1_PSS_PADDING,
+        saltLength: 20
+      },
+      "base64"
+    );
 
-    //verify String
+    // VERIFY String
     var verifierObject = crypto.createVerify("RSA-SHA512");
     verifierObject.update(exampleString);
-    var verified = verifierObject.verify(pair["public"], signature, "base64");
+    var verified = verifierObject.verify(
+      {
+        key: pair["public"],
+        padding: crypto.constants.RSA_PKCS1_PSS_PADDING,
+        saltLength: 20
+      },
+      signature,
+      "base64"
+    );
 
     logger.info("is signature ok?: %s", verified);
   } catch (error) {

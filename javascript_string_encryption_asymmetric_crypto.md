@@ -25,12 +25,13 @@ current_reviews: [
 
 ]
 # Indicates when this example was last updated/created. Reviews don't change this.
-last_updated: "2018-10-15"
+last_updated: "2018-10-20"
 tags: [JavaScript, Node.js, node-crypto, RSA, Asymmetric, String, Encryption]
 ---
 
 ## Use cases
 
+- Usable on server side
 - All can encrypt a message using the public key, but only the recipient can decrypt it using the private key
 - Encrypt a string using the public key and decrypting it using the private key
 
