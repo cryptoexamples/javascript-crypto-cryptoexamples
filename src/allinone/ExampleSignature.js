@@ -1,8 +1,8 @@
 /**
  * An example for signing of a String featuring:
  * - An out of the box working Example
- * - Generation of a RSA 3072 bit keypair
- * - sha-512 digest and RSA encryption of text with PSS
+ * - Generation of a RSA keypair
+ * - Sha-512 digest and RSA encryption of text with PSS
  * - Utf8 Encoding of Strings
  * - base64 Encoding of byte arrays
  * - Logging of exceptions
@@ -27,14 +27,15 @@ const logger = winston.createLogger({
 const demonstrateSignature = () => {
   try {
     // replace with your actual String
-    let exampleString =
+    var exampleString =
       "Text that should be signed to prevent unknown tampering with its content.";
     // generate a keypair, in asynchronous encryption both keys need to be related
     // and cannot be independently generated keys
     // keylength adheres to the "ECRYPT-CSA Recommendations" on "www.keylength.com"
     // not needed if you already posses public and private key
-    var pair = keypair(3072);
+    var pair = keypair(4096);
     exampleString = exampleString.toString("utf8");
+
     // SIGN String
     var signerObject = crypto.createSign("RSA-SHA512");
     signerObject.update(exampleString);

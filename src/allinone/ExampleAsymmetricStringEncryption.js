@@ -1,7 +1,7 @@
 /**
  * An example for asynchronous encryption and decryption of a String featuring:
  * - An out of the box working Example
- * - Generation of a RSA 3072 bit keypair
+ * - Generation of a RSA keypair
  * - RSA encryption and decryption of text using OAEP padding
  * - Utf8 Encoding of Strings
  * - base64 Encoding of byte arrays
@@ -28,17 +28,18 @@ const logger = winston.createLogger({
 const demonstrateKeyBasedAsymmetricEncryption = () => {
   try {
     // replace with your actual String
-    let exampleString =
+    var exampleString =
       "Text that is going to be sent over an insecure channel and must be encrypted at all costs!";
     // generate a keypair, in asynchronous encryption both keys need to be related
     // and cannot be independently generated keys
     // keylength adheres to the "ECRYPT-CSA Recommendations" on "www.keylength.com"
     // not needed if you already posses public and private key
-    let pair = keypair(3072);
+    var pair = keypair(4096);
     exampleString = exampleString.toString("utf8");
+
     // ENCRYPT String
-    let toEncrypt = Buffer.from(exampleString, "utf8");
-    let encrypted = crypto.publicEncrypt(
+    var toEncrypt = Buffer.from(exampleString, "utf8");
+    var encrypted = crypto.publicEncrypt(
       {
         key: pair["public"],
         padding: crypto.constants.RSA_PKCS1_OAEP_PADDING
@@ -48,8 +49,8 @@ const demonstrateKeyBasedAsymmetricEncryption = () => {
     encrypted = encrypted.toString("base64");
 
     // DECRYPT String
-    let toDecrypt = Buffer.from(encrypted, "base64");
-    let decrypted = crypto.privateDecrypt(
+    var toDecrypt = Buffer.from(encrypted, "base64");
+    var decrypted = crypto.privateDecrypt(
       {
         key: pair["private"],
         padding: crypto.constants.RSA_PKCS1_OAEP_PADDING

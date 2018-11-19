@@ -2,7 +2,7 @@
  * An example for synchronous encryption and decryption of a String with password derived key featuring:
  * - An out of the box working Example
  * - Generation of a random password
- * - derivation of a key from a password with PBKDF2
+ * - Derivation of a key from a password with PBKDF2
  * - AES-256 encryption using GCM
  * - Utf8 Encoding of Strings
  * - Base64 String encoding of byte-Arrays
@@ -28,34 +28,35 @@ const logger = winston.createLogger({
 const demonstratePasswordBasedSymmetricEncryption = () => {
   try {
     // replace with your actual String
-    let exampleString =
+    var exampleString =
       "Text that is going to be sent over an insecure channel and must be encrypted at all costs!";
 
     // the password used for derviation of a key, assign your password here
     // if none is assigned a random one is generated
-    let password = null;
+    var password = null;
     if (password === null) {
       password = crypto.randomBytes(48).toString("utf8");
     }
     exampleString = exampleString.toString("utf8");
+
     // derive key with password and salt
     // keylength adheres to the "ECRYPT-CSA Recommendations" on "www.keylength.com"
-    let salt = crypto.randomBytes(128);
-    let derivedKey = crypto.pbkdf2Sync(password, salt, 10000, 32, "sha256");
+    var salt = crypto.randomBytes(128);
+    var derivedKey = crypto.pbkdf2Sync(password, salt, 10000, 32, "sha256");
 
     // create random initialization vector
-    let iv = crypto.randomBytes(16);
+    var iv = crypto.randomBytes(16);
 
     // ENCRYPT the Text
-    let cipher = crypto.createCipheriv("aes-256-gcm", derivedKey, iv);
-    let encrypted = cipher.update(exampleString, "utf8", "base64");
+    var cipher = crypto.createCipheriv("aes-256-gcm", derivedKey, iv);
+    var encrypted = cipher.update(exampleString, "utf8", "base64");
     encrypted += cipher.final("base64");
-    let authTag = cipher.getAuthTag();
+    var authTag = cipher.getAuthTag();
 
     // DECRYPT the Text
-    let decipher = crypto.createDecipheriv("aes-256-gcm", derivedKey, iv);
+    var decipher = crypto.createDecipheriv("aes-256-gcm", derivedKey, iv);
     decipher.setAuthTag(authTag);
-    let decrypted = decipher.update(encrypted, "base64", "utf8");
+    var decrypted = decipher.update(encrypted, "base64", "utf8");
     decrypted += decipher.final("utf8");
 
     logger.info(

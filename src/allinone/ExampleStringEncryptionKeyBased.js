@@ -4,7 +4,7 @@
  * - Generation of a random Key
  * - AES-256 encryption using GCM
  * - Utf8 Encoding of Strings
- * - base64 Encoding of byte arrays
+ * - Base64 Encoding of byte arrays
  * - Logging of exceptions
  */
 
@@ -27,16 +27,17 @@ const logger = winston.createLogger({
 const demonstrateKeyBasedSymmetricEncryption = () => {
   try {
     // replace with your actual String
-    let exampleString =
+    var exampleString =
       "Text that is going to be sent over an insecure channel and must be encrypted at all costs!";
     // the key used for encryption and decryption, assign your key here
     // if none is assigned a random one is generated
     // keylength adheres to the "ECRYPT-CSA Recommendations" on "www.keylength.com"
-    let key = null;
+    var key = null;
     if (key === null) {
       key = crypto.randomBytes(32);
     }
     exampleString = exampleString.toString("utf8");
+
     // create random initialization vector
     var iv = crypto.randomBytes(16);
 
@@ -44,7 +45,7 @@ const demonstrateKeyBasedSymmetricEncryption = () => {
     var cipher = crypto.createCipheriv("aes-256-gcm", key, iv);
     var encrypted = cipher.update(exampleString, "utf8", "base64");
     encrypted += cipher.final("base64");
-    let authTag = cipher.getAuthTag();
+    var authTag = cipher.getAuthTag();
 
     // DECRYPT the Text
     var decipher = crypto.createDecipheriv("aes-256-gcm", key, iv);
