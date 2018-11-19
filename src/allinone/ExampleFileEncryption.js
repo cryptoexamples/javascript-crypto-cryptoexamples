@@ -2,9 +2,10 @@
  * An example for synchronous encryption and decryption of a file
  * - an out of the box working Example
  * - generation of a random password
- * - derivation of a key from a password
+ * - derivation of a key from a password with PBKDF2
+ * - AES-256 encryption using GCM
  * - base64 Encoding of byte arrays
- * - Utf8 Encoding of Plaintext
+ * - Utf8 Encoding of Strings
  * - Logging of exceptions
  */
 

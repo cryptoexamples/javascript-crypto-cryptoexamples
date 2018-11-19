@@ -2,7 +2,8 @@
  * An example for synchronous encryption and decryption of a String with password derived key featuring:
  * - An out of the box working Example
  * - Generation of a random password
- * - derivation of a key
+ * - derivation of a key from a password with PBKDF2
+ * - AES-256 encryption using GCM
  * - Utf8 Encoding of Strings
  * - Base64 String encoding of byte-Arrays
  * - Logging of exceptions
@@ -36,7 +37,7 @@ const demonstratePasswordBasedSymmetricEncryption = () => {
     if (password === null) {
       password = crypto.randomBytes(48).toString("utf8");
     }
-
+    exampleString = exampleString.toString("utf8");
     // derive key with password and salt
     // keylength adheres to the "ECRYPT-CSA Recommendations" on "www.keylength.com"
     let salt = crypto.randomBytes(128);

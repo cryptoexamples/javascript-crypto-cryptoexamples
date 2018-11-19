@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.2.1] - 2018-11-19
+
+### Added
+
+- explicit encoding to utf8
+- some comments
+
+### Fixed
+
+- fixed object oriented fileencryption
+
+### Security
+
+- added OAEP padding
+- added pss padding
+
 ## [0.2.0] - 2018-10-16
 
 ### Fixed
@@ -65,6 +81,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - made some security relevant changes
 - made other security relevant changes
 
-[unreleased]: https://github.com/cryptoexamples/javascript-crypto-cryptoexamples/compare/v0.2.0...HEAD
+[unreleased]: https://github.com/cryptoexamples/javascript-crypto-cryptoexamples/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/cryptoexamples/javascript-crypto-cryptoexamples/compare/v0.1.3...v0.2.1
 [0.2.0]: https://github.com/cryptoexamples/javascript-crypto-cryptoexamples/compare/v0.1.3...v0.2.0
 [0.1.3]: https://github.com/cryptoexamples/javascript-crypto-cryptoexamples/releases/tag/v0.1.3

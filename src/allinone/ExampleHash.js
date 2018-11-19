@@ -3,7 +3,7 @@
  * - An out of the box working Example
  * - sha-512 digest
  * - Utf8 Encoding of Strings
- * - Base64 String encoding of digest
+ * - base64 Encoding of byte arrays
  * - Logging of exceptions
  */
 
@@ -30,6 +30,8 @@ const demonstrateHash = () => {
       "Text that should be authenticated by comparing the hash of it!";
     let exampleString2 =
       "Text that should be authenticated by comparing the hash of it! - 2";
+    exampleString = exampleString.toString("utf8");
+    exampleString2 = exampleString2.toString("utf8");
     //create a hash object
     let hashObject = crypto.createHash("sha512");
     hashObject.setEncoding("base64");

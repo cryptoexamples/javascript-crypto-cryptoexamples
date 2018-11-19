@@ -2,8 +2,9 @@
  * An example for synchronous encryption and decryption of a String featuring:
  * - An out of the box working Example
  * - Generation of a random Key
+ * - AES-256 encryption using GCM
  * - Utf8 Encoding of Strings
- * - Base64 String encoding of byte-Arrays
+ * - base64 Encoding of byte arrays
  * - Logging of exceptions
  */
 
@@ -35,7 +36,7 @@ const demonstrateKeyBasedSymmetricEncryption = () => {
     if (key === null) {
       key = crypto.randomBytes(32);
     }
-
+    exampleString = exampleString.toString("utf8");
     // create random initialization vector
     var iv = crypto.randomBytes(16);
 

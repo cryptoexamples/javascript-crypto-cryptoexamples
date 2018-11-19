@@ -2,8 +2,9 @@
  * An example for asynchronous encryption and decryption of a String featuring:
  * - An out of the box working Example
  * - Generation of a RSA 3072 bit keypair
+ * - RSA encryption and decryption of text using OAEP padding
  * - Utf8 Encoding of Strings
- * - Base64 String encoding of byte-Arrays
+ * - base64 Encoding of byte arrays
  * - Logging of exceptions
  */
 
@@ -34,30 +35,29 @@ const demonstrateKeyBasedAsymmetricEncryption = () => {
     // keylength adheres to the "ECRYPT-CSA Recommendations" on "www.keylength.com"
     // not needed if you already posses public and private key
     let pair = keypair(3072);
-
+    exampleString = exampleString.toString("utf8");
     // ENCRYPT String
     let toEncrypt = Buffer.from(exampleString, "utf8");
-    let encrypted = crypto
-      .publicEncrypt(
-        {
-          key: pair["public"],
-          padding: crypto.constants.RSA_PKCS1_OAEP_PADDING
-        },
-        toEncrypt
-      )
-      .toString("base64");
+    let encrypted = crypto.publicEncrypt(
+      {
+        key: pair["public"],
+        padding: crypto.constants.RSA_PKCS1_OAEP_PADDING
+      },
+      toEncrypt
+    );
+    encrypted = encrypted.toString("base64");
 
     // DECRYPT String
     let toDecrypt = Buffer.from(encrypted, "base64");
-    let decrypted = crypto
-      .privateDecrypt(
-        {
-          key: pair["private"],
-          padding: crypto.constants.RSA_PKCS1_OAEP_PADDING
-        },
-        toDecrypt
-      )
-      .toString("utf8");
+    let decrypted = crypto.privateDecrypt(
+      {
+        key: pair["private"],
+        padding: crypto.constants.RSA_PKCS1_OAEP_PADDING
+      },
+      toDecrypt
+    );
+    decrypted = decrypted.toString("utf8");
+
     logger.info(
       "Decrypted String and original String are the same: %s",
       exampleString.localeCompare(decrypted) === 0 ? "yes" : "no"
