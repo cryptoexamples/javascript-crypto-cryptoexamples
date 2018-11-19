@@ -39,15 +39,14 @@ const logger = winston.createLogger({
  */
 const encryptFile = (inputPath, outputPath, key, iv) => {
   // input file
-  let inputFile = fs.createReadStream(inputPath);
+  var inputFile = fs.readFileSync(inputPath);
   // encrypt content
-  let encrypt = crypto.createCipheriv("aes-256-ctr", key, iv);
+  var cipher = crypto.createCipheriv("aes-256-ctr", key, iv);
+  var encrypted = cipher.update(inputFile, "utf8", "base64");
+  encrypted += cipher.final("base64");
   // write file
-  let outputFile = fs.createWriteStream(outputPath);
-  // start pipe
-  inputFile.pipe(encrypt).pipe(outputFile);
-  // return the writeStream for synchronization purposes
-  return outputFile;
+  fs.writeFileSync(outputPath, Buffer.from(encrypted, "base64"));
+  return null;
 };
 
 /**
@@ -63,44 +62,41 @@ const encryptFile = (inputPath, outputPath, key, iv) => {
  */
 const decryptFile = (inputPath, outputPath, key, iv) => {
   // input file
-  let inputFile = fs.createReadStream(inputPath);
+  var inputFile = fs.readFileSync(inputPath);
   // encrypt content
-  let decrypt = crypto.createDecipheriv("aes-256-ctr", key, iv);
+  var decipher = crypto.createDecipheriv("aes-256-ctr", key, iv);
+  var decrypted = decipher.update(inputFile, "base64", "utf8");
+  decrypted += decipher.final("utf8");
+  decrypted = Buffer.from(decrypted, "utf8");
   // write file
-  let outputFile = fs.createWriteStream(outputPath);
-  // start pipe
-  inputFile.pipe(decrypt).pipe(outputFile);
-  // return the writeStream for synchronization purposes
-  return outputFile;
+  fs.writeFileSync(outputPath, decrypted);
+  return null;
 };
 
 try {
   // the password used for derviation of a key, assign your password here
   // if none is assigned a random one is generated
-  let password = null;
+  var password = null;
   if (password === null) {
     password = crypto.randomBytes(48).toString("utf8");
   }
 
   // create random salt
-  let salt = crypto.randomBytes(128);
+  var salt = crypto.randomBytes(128);
   //create random key with password and salt
-  let key = crypto.pbkdf2Sync(password, salt, 10000, 32, "sha256");
+  var key = crypto.pbkdf2Sync(password, salt, 10000, 32, "sha256");
   // create random initialization vector
-  let iv = crypto.randomBytes(16);
+  var iv = crypto.randomBytes(16);
 
-  // start to encrypt/decrypt file content via read and write streams and piping
-  // with an asynchronous control flow
-  encryptFile("file.txt", "file.enc.txt", key, iv).on("finish", () => {
-    decryptFile("file.enc.txt", "file.dec.txt", key, iv).on("finish", () => {
-      var input = fs.readFileSync("file.txt");
-      var output = fs.readFileSync("file.dec.txt");
-      logger.info(
-        "Decrypted file content and original file content are the same: %s",
-        Buffer.compare(output, input) === 0 ? "yes" : "no"
-      );
-    });
-  });
+  // start to encrypt/decrypt file content
+  encryptFile("file.txt", "file.enc.txt", key, iv);
+  decryptFile("file.enc.txt", "file.dec.txt", key, iv);
+  var input = fs.readFileSync("file.txt");
+  var output = fs.readFileSync("file.dec.txt");
+  logger.info(
+    "Decrypted file content and original file content are the same: %s",
+    Buffer.compare(output, input) === 0 ? "yes" : "no"
+  );
 } catch (error) {
   logger.error(error.message);
 }
