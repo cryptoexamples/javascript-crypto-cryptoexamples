@@ -18,6 +18,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - made assymetric kelength longer
 - made some salts longer
 
+### Changed
+
+- linter for code
+
 ## [0.2.1] - 2018-11-19
 
 ### Added
@@ -93,7 +97,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - made other security relevant changes
 
 [unreleased]: https://github.com/cryptoexamples/javascript-crypto-cryptoexamples/compare/v0.2.2...HEAD
-[0.2.2]: https://github.com/cryptoexamples/javascript-crypto-cryptoexamples/compare/v0.1.3...v0.2.2
-[0.2.1]: https://github.com/cryptoexamples/javascript-crypto-cryptoexamples/compare/v0.1.3...v0.2.1
+[0.2.2]: https://github.com/cryptoexamples/javascript-crypto-cryptoexamples/compare/v0.2.1...v0.2.2
+[0.2.1]: https://github.com/cryptoexamples/javascript-crypto-cryptoexamples/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/cryptoexamples/javascript-crypto-cryptoexamples/compare/v0.1.3...v0.2.0
 [0.1.3]: https://github.com/cryptoexamples/javascript-crypto-cryptoexamples/releases/tag/v0.1.3
