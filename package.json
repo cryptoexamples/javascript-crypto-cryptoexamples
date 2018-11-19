@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url":
-      "https://gilbert.informatik.uni-stuttgart.de/minderki/CryptoExamples-in-JavaScript.git"
+    "url": "https://gilbert.informatik.uni-stuttgart.de/minderki/CryptoExamples-in-JavaScript.git"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.1.2",
     "chai-files": "^1.4.0",
+    "eslint": "^5.9.0",
     "mocha": "^5.2.0",
     "nyc": "^13.0.1",
     "sinon": "^6.3.3",
@@ -25,7 +25,10 @@
   "nyc": {
     "check-coverage": true,
     "per-file": true,
-    "reporter": ["lcovonly", "text"],
+    "reporter": [
+      "lcovonly",
+      "text"
+    ],
     "temp-dir": "./codeanalysis-tmp",
     "temp-directory": "./codeanalysis/temp",
     "report-dir": "./codeanalysis"

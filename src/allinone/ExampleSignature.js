@@ -43,7 +43,7 @@ const demonstrateSignature = () => {
       {
         key: pair["private"],
         padding: crypto.constants.RSA_PKCS1_PSS_PADDING,
-        saltLength: 20
+        saltLength: 128
       },
       "base64"
     );
@@ -55,7 +55,7 @@ const demonstrateSignature = () => {
       {
         key: pair["public"],
         padding: crypto.constants.RSA_PKCS1_PSS_PADDING,
-        saltLength: 20
+        saltLength: 128
       },
       signature,
       "base64"
