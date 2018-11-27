@@ -9,8 +9,7 @@
  */
 
 var crypto = require("crypto"),
-  winston = require("winston"),
-  keypair = require("keypair");
+  winston = require("winston");
 
 const logger = winston.createLogger({
   format: winston.format.combine(
@@ -34,14 +33,25 @@ const demonstrateKeyBasedAsymmetricEncryption = () => {
     // and cannot be independently generated keys
     // keylength adheres to the "ECRYPT-CSA Recommendations" on "www.keylength.com"
     // not needed if you already posses public and private key
-    var pair = keypair(4096);
+    var pair = crypto.generateKeyPairSync("rsa", {
+      modulusLength: 4096,
+      publicExponent: 0x10001,
+      publicKeyEncoding: {
+        type: "spki",
+        format: "pem"
+      },
+      privateKeyEncoding: {
+        type: "pkcs8",
+        format: "pem"
+      }
+    });
     exampleString = exampleString.toString("utf8");
 
     // ENCRYPT String
     var toEncrypt = Buffer.from(exampleString, "utf8");
     var encrypted = crypto.publicEncrypt(
       {
-        key: pair["public"],
+        key: pair.publicKey,
         padding: crypto.constants.RSA_PKCS1_OAEP_PADDING
       },
       toEncrypt
@@ -52,7 +62,7 @@ const demonstrateKeyBasedAsymmetricEncryption = () => {
     var toDecrypt = Buffer.from(encrypted, "base64");
     var decrypted = crypto.privateDecrypt(
       {
-        key: pair["private"],
+        key: pair.privateKey,
         padding: crypto.constants.RSA_PKCS1_OAEP_PADDING
       },
       toDecrypt

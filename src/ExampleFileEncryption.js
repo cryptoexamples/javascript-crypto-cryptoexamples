@@ -44,12 +44,15 @@ const demonstrateFileEncryption = () => {
     var iv = crypto.randomBytes(16);
 
     // read and ENCRYPT the filecontent and write it to a encrypted file
-    var inputFile = fs.readFileSync("file.txt");
+    var inputFile = fs.readFileSync("test/testdat/file.txt");
     var cipher = crypto.createCipheriv("aes-256-gcm", derivedKey, iv);
     var encrypted = cipher.update(inputFile, "utf8", "base64");
     encrypted += cipher.final("base64");
     var authTag = cipher.getAuthTag();
-    fs.writeFileSync("file.enc.txt", Buffer.from(encrypted, "base64"));
+    fs.writeFileSync(
+      "test/testdat/file.enc.txt",
+      Buffer.from(encrypted, "base64")
+    );
 
     // DECRYPT the filecontent and write it to a decrypted file
     var decipher = crypto.createDecipheriv("aes-256-gcm", derivedKey, iv);
@@ -57,7 +60,7 @@ const demonstrateFileEncryption = () => {
     var decrypted = decipher.update(encrypted, "base64", "utf8");
     decrypted += decipher.final("utf8");
     decrypted = Buffer.from(decrypted, "utf8");
-    fs.writeFileSync("file.dec.txt", decrypted);
+    fs.writeFileSync("test/testdat/file.dec.txt", decrypted);
 
     logger.info(
       "Decrypted file content and original file content are the same: %s",

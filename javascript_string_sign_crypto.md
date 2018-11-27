@@ -25,32 +25,29 @@ current_reviews: [
 
 ]
 # Indicates when this example was last updated/created. Reviews don't change this.
-last_updated: "2018-10-20"
+last_updated: "2018-11-27"
 tags: [JavaScript, Node.js, node-crypto, hash, SHA, SHA-512]
 ---
 
 ## Use cases
 
-- Usable on server side
-- verifying if a string has been changed
+- Usable on server side, not intended for use, on client side, in Browsers
+- verifying, if a string has been changed
 
 ## node version
 
-- 8.11.2
+- 10.13.0
 
 ## JavaScript Version
 
-- ECMAScript 6
-- In order to run this code, one hast to build it with an ECMAScript 6 compiler like Babel. see "installation".
+- ECMAScript 6 and higher
 
 ## Installation
 
 - crypto is is a native node module, no installation is required
-- [Babel](https://babeljs.io/)
 - [Winston logger](https://github.com/winstonjs/winston)
-- [keypair](https://github.com/juliangruber/keypair)
 
-## Example Code for JavaScript String Signing using SHA-512, RSA 3072, BASE64 and UTF-8 encoding
+## Example Code for JavaScript String Signing using SHA-512, RSA 4098, BASE64 and UTF-8 encoding
 
 ```js
 {% include_relative src/allinone/ExampleSignature.js %}

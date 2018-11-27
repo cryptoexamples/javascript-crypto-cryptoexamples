@@ -24,19 +24,19 @@ current_reviews: [
 
 ]
 # Indicates when this example was last updated/created. Reviews don't change this.
-last_updated: "2018-10-20"
+last_updated: "2018-11-27"
 tags: [JavaScript, Node.js, node-crypto, AES, GCM, Salt, AEAD] 
 ---
 
 ## Use cases
 
-- Usable on server side
+- Usable on server side, not intended for use on client side
 - Random key generation
 - String encryption
 
 ## node version
 
-- 8.11.2
+- 10.13.0
 
 ## JavaScript Version
 

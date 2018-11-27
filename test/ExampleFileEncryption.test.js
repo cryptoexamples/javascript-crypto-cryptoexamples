@@ -1,4 +1,4 @@
-var testee = require("../../src/allinone/ExampleFileEncryption.js");
+var testee = require("../src/ExampleFileEncryption.js");
 
 var chai = require("chai"),
   sinon = require("sinon"),

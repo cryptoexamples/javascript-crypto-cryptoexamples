@@ -1,4 +1,4 @@
-var testee = require("../../src/allinone/ExampleStringEncryptionKeyBased.js");
+var testee = require("../src/ExampleStringEncryptionPasswordBased.js");
 
 var chai = require("chai"),
   mocha = require("mocha"),
@@ -7,7 +7,7 @@ var chai = require("chai"),
 
 chai.use(sinonChai);
 
-describe("ExampleStringEncryptionKeyBased allInOne crypto Test runs", function() {
+describe("ExampleStringEncryptionPasswordBased allInOne crypto Test runs", function() {
   beforeEach(function() {
     sinon.spy(testee.logger, "info");
   });
@@ -17,7 +17,7 @@ describe("ExampleStringEncryptionKeyBased allInOne crypto Test runs", function()
   });
 
   it("logger output should confirm that Strings are the same", function() {
-    testee.demonstrateKeyBasedSymmetricEncryption();
+    testee.demonstratePasswordBasedSymmetricEncryption();
     chai.assert.include(testee.logger.info.getCall(0).args, "yes");
   });
 });

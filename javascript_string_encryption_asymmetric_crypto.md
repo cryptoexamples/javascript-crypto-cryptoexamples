@@ -25,19 +25,19 @@ current_reviews: [
 
 ]
 # Indicates when this example was last updated/created. Reviews don't change this.
-last_updated: "2018-10-20"
+last_updated: "2018-11-27"
 tags: [JavaScript, Node.js, node-crypto, RSA, Asymmetric, String, Encryption]
 ---
 
 ## Use cases
 
-- Usable on server side
+- Usable on server side, not intended for use, on client side, in Browsers
 - All can encrypt a message using the public key, but only the recipient can decrypt it using the private key
-- Encrypt a string using the public key and decrypting it using the private key
+- Encrypt a string, using the public key and decrypting it, using the private key
 
 ## node version
 
-- 8.11.2
+- 10.13.0
 
 ## JavaScript Version
 
@@ -47,9 +47,8 @@ tags: [JavaScript, Node.js, node-crypto, RSA, Asymmetric, String, Encryption]
 
 - crypto is is a native node module, no installation is required
 - [Winston logger](https://github.com/winstonjs/winston)
-- [keypair](https://github.com/juliangruber/keypair)
 
-## Example Code for JavaScript Asymmetric String Encryption using RSA 3072
+## Example Code for JavaScript Asymmetric String Encryption using RSA 4096
 
 ```js
 {% include_relative src/allinone/ExampleAsymmetricStringEncryption.js %}

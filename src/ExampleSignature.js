@@ -8,7 +8,6 @@
  * - Logging of exceptions
  */
 var crypto = require("crypto"),
-  keypair = require("keypair"),
   winston = require("winston");
 
 const logger = winston.createLogger({
@@ -33,7 +32,18 @@ const demonstrateSignature = () => {
     // and cannot be independently generated keys
     // keylength adheres to the "ECRYPT-CSA Recommendations" on "www.keylength.com"
     // not needed if you already posses public and private key
-    var pair = keypair(4096);
+    var pair = crypto.generateKeyPairSync("rsa", {
+      modulusLength: 4096,
+      publicExponent: 0x10001,
+      publicKeyEncoding: {
+        type: "spki",
+        format: "pem"
+      },
+      privateKeyEncoding: {
+        type: "pkcs8",
+        format: "pem"
+      }
+    });
     exampleString = exampleString.toString("utf8");
 
     // SIGN String
@@ -41,7 +51,7 @@ const demonstrateSignature = () => {
     signerObject.update(exampleString);
     var signature = signerObject.sign(
       {
-        key: pair["private"],
+        key: pair.privateKey,
         padding: crypto.constants.RSA_PKCS1_PSS_PADDING,
         saltLength: 128
       },
@@ -53,7 +63,7 @@ const demonstrateSignature = () => {
     verifierObject.update(exampleString);
     var verified = verifierObject.verify(
       {
-        key: pair["public"],
+        key: pair.publicKey,
         padding: crypto.constants.RSA_PKCS1_PSS_PADDING,
         saltLength: 128
       },

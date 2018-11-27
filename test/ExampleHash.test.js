@@ -1,4 +1,4 @@
-var testee = require("../../src/allinone/ExampleHash.js");
+var testee = require("../src/ExampleHash.js");
 
 var chai = require("chai"),
   sinon = require("sinon"),

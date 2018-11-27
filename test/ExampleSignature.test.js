@@ -1,4 +1,4 @@
-var testee = require("../../src/allinone/ExampleSignature.js");
+var testee = require("../src/ExampleSignature.js");
 
 var chai = require("chai"),
   sinon = require("sinon"),
