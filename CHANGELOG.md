@@ -7,6 +7,31 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.2.3] - 2018-11-27
+
+### Added
+
+- directory for testfiles
+
+### Changed
+
+- some commments
+- Updated Node.js to v10.13.0
+
+### Removed
+
+- Tesfiles from main directory
+- directory "allinone" for test/ and src/
+- keypair generator
+
+### Fixed
+
+- md files
+
+### Security
+
+- Now, RSA keys get created by cryto
+
 ## [0.2.2] - 2018-11-19
 
 ### Added
@@ -96,7 +121,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - made some security relevant changes
 - made other security relevant changes
 
-[unreleased]: https://github.com/cryptoexamples/javascript-crypto-cryptoexamples/compare/v0.2.2...HEAD
+[unreleased]: https://github.com/cryptoexamples/javascript-crypto-cryptoexamples/compare/v0.2.3...HEAD
+[0.2.2]: https://github.com/cryptoexamples/javascript-crypto-cryptoexamples/compare/v0.2.2...v0.2.3
 [0.2.2]: https://github.com/cryptoexamples/javascript-crypto-cryptoexamples/compare/v0.2.1...v0.2.2
 [0.2.1]: https://github.com/cryptoexamples/javascript-crypto-cryptoexamples/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/cryptoexamples/javascript-crypto-cryptoexamples/compare/v0.1.3...v0.2.0

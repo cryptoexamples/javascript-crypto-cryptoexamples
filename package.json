@@ -33,7 +33,5 @@
     "temp-directory": "./codeanalysis/temp",
     "report-dir": "./codeanalysis"
   },
-  "dependencies": {
-    "keypair": "^1.0.1"
-  }
+  "dependencies": {}
 }
