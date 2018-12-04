@@ -26,6 +26,11 @@ Example code for cryptographic use cases. Used in [CryptoExamples](https://githu
 
 -   To run the unit tests use "npm test", this will run all files, which have tests first.
 -   To just run one specific file use "node path/to/file/filename"
+-   To lint one file use "./node_modules/.bin/eslint src/filename
+
+## Misc
+
+More Information on usage of ESLint [here](https://eslint.org/docs/user-guide/getting-started)
 
 ## License
 
